@@ -2,13 +2,10 @@ package edu.mum.cs545.ws;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 
 import cs545.airline.model.Airplane;
 import cs545.airline.service.AirplaneService;
-
-import javax.ws.rs.GET;
 
 @Named
 @Path("airplane")
@@ -26,6 +23,23 @@ public class AirplaneController {
 	@Path("byModel/{model}")
 	public List<Airplane> getAirplaneByModel(@PathParam("model") String model){
 		return airplaneService.findByModel(model);
+	}
+
+	@POST
+	@Path("new")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Airplane createAirplane(Airplane airplane){
+		airplaneService.create(airplane);
+		return airplaneService.find(airplane);
+	}
+
+	@DELETE
+	@Path("delete/{id}")
+	public void deleteAirplane(@PathParam("id") long id){
+		Airplane airplane = new Airplane();
+		airplane.setId(id);
+		airplaneService.delete(airplaneService.find(airplane));
 	}
 	
 }

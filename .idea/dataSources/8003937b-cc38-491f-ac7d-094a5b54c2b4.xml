@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="sun-appserv-samples@localhost">
+  <database-model serializer="dbm" rdbms="DERBY" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="APP">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="NULLID"/>
+    <schema id="4" parent="1" name="SQLJ"/>
+    <schema id="5" parent="1" name="SYS"/>
+    <schema id="6" parent="1" name="SYSCAT"/>
+    <schema id="7" parent="1" name="SYSCS_DIAG"/>
+    <schema id="8" parent="1" name="SYSCS_UTIL"/>
+    <schema id="9" parent="1" name="SYSFUN"/>
+    <schema id="10" parent="1" name="SYSIBM"/>
+    <schema id="11" parent="1" name="SYSPROC"/>
+    <schema id="12" parent="1" name="SYSSTAT"/>
+    <table id="13" parent="2" name="AIRLINE"/>
+    <table id="14" parent="2" name="AIRPLANE"/>
+    <table id="15" parent="2" name="AIRPORT"/>
+    <table id="16" parent="2" name="FLIGHT"/>
+    <table id="17" parent="2" name="SEQUENCE"/>
+    <column id="18" parent="13" name="ID">
+      <Position>1</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="13" name="NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+    </column>
+    <index id="20" parent="13" name="SQL170608220718300">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NAME</ColNames>
+    </index>
+    <key id="21" parent="13" name="SQL170608220717660">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="22" parent="14" name="ID">
+      <Position>1</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="14" name="CAPACITY">
+      <Position>2</Position>
+      <DataType>INTEGER(10)|4</DataType>
+    </column>
+    <column id="24" parent="14" name="MODEL">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+    </column>
+    <column id="25" parent="14" name="SERIALNR">
+      <Position>4</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+    </column>
+    <index id="26" parent="14" name="SQL170608220718420">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>SERIALNR</ColNames>
+    </index>
+    <key id="27" parent="14" name="SQL170608220717850">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="28" parent="15" name="ID">
+      <Position>1</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="15" name="AIRPORTCODE">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+    </column>
+    <column id="30" parent="15" name="CITY">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+    </column>
+    <column id="31" parent="15" name="COUNTRY">
+      <Position>4</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+    </column>
+    <column id="32" parent="15" name="NAME">
+      <Position>5</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+    </column>
+    <index id="33" parent="15" name="SQL170608220718500">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>AIRPORTCODE</ColNames>
+    </index>
+    <key id="34" parent="15" name="SQL170608220718000">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="35" parent="16" name="ID">
+      <Position>1</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="16" name="ARRIVALDATE">
+      <Position>2</Position>
+      <DataType>DATE(10)|91</DataType>
+    </column>
+    <column id="37" parent="16" name="ARRIVALTIME">
+      <Position>3</Position>
+      <DataType>TIME(8)|92</DataType>
+    </column>
+    <column id="38" parent="16" name="DEPARTUREDATE">
+      <Position>4</Position>
+      <DataType>DATE(10)|91</DataType>
+    </column>
+    <column id="39" parent="16" name="DEPARTURETIME">
+      <Position>5</Position>
+      <DataType>TIME(8)|92</DataType>
+    </column>
+    <column id="40" parent="16" name="FLIGHTNR">
+      <Position>6</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+    </column>
+    <column id="41" parent="16" name="AIRLINE_ID">
+      <Position>7</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+    </column>
+    <column id="42" parent="16" name="AIRPLANE_ID">
+      <Position>8</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+    </column>
+    <column id="43" parent="16" name="DESTINATION_ID">
+      <Position>9</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+    </column>
+    <column id="44" parent="16" name="ORIGIN_ID">
+      <Position>10</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+    </column>
+    <key id="45" parent="16" name="SQL170608220718180">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="46" parent="16" name="FLIGHT_AIRLINE_ID">
+      <ColNames>AIRLINE_ID</ColNames>
+      <RefSchemaName>APP</RefSchemaName>
+      <RefTableName>AIRLINE</RefTableName>
+      <RefKeyName>SQL170608220717660</RefKeyName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="47" parent="16" name="FLIGHT_AIRPLANE_ID">
+      <ColNames>AIRPLANE_ID</ColNames>
+      <RefSchemaName>APP</RefSchemaName>
+      <RefTableName>AIRPLANE</RefTableName>
+      <RefKeyName>SQL170608220717850</RefKeyName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="48" parent="16" name="FLIGHTDSTINATIONID">
+      <ColNames>DESTINATION_ID</ColNames>
+      <RefSchemaName>APP</RefSchemaName>
+      <RefTableName>AIRPORT</RefTableName>
+      <RefKeyName>SQL170608220718000</RefKeyName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="49" parent="16" name="FLIGHT_ORIGIN_ID">
+      <ColNames>ORIGIN_ID</ColNames>
+      <RefSchemaName>APP</RefSchemaName>
+      <RefTableName>AIRPORT</RefTableName>
+      <RefKeyName>SQL170608220718000</RefKeyName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="50" parent="17" name="SEQ_NAME">
+      <Position>1</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="17" name="SEQ_COUNT">
+      <Position>2</Position>
+      <DataType>DECIMAL(15)|3</DataType>
+    </column>
+    <key id="52" parent="17" name="SQL170608220719110">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>SEQ_NAME</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
