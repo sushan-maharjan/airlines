@@ -7,6 +7,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import cs545.airline.model.Airline;
 import cs545.airline.model.Airplane;
 import edu.mum.gf.workaround.JpaUtil;
 
@@ -26,7 +27,10 @@ public class AirplaneDao {
 	}
 
 	public Airplane update(Airplane airplane) {
-		return entityManager.merge(airplane);
+		entityManager.getTransaction().begin();
+		Airplane a = entityManager.merge(airplane);
+		entityManager.getTransaction().commit();
+		return a;
 	}
 
 	public void delete(Airplane airplane) {

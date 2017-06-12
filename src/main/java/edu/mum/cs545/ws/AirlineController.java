@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 import cs545.airline.model.Airline;
 import cs545.airline.service.AirlineService;
@@ -39,11 +40,16 @@ public class AirlineController {
 
 	@DELETE
 	@Path("delete/{id}")
-	public List<Airline> deleteAirline(@PathParam("id") long id){
-		Airline airline = new Airline();
-		airline.setId(id);
-		airlineService.delete(airlineService.find(airline));
-		return airlineService.findAll();
+	public Response deleteAirline(@PathParam("id") long id){
+		try{
+			Airline airline = new Airline();
+			airline.setId(id);
+			airlineService.delete(airlineService.find(airline));
+			return Response.ok().entity(airlineService.find(airline)).build();
+		}
+		catch (Exception e){
+			return Response.status(500).entity(e.getMessage()).build();
+		}
 	}
 
 	@DELETE
@@ -55,10 +61,13 @@ public class AirlineController {
 	@PUT
 	@Path("update/{id}")
 	@Consumes("application/json")
-	public Airline update(@PathParam("id") long id){
-		Airline airline = new Airline();
-		airline.setId(id);
-		airlineService.update(airlineService.find(airline));
-		return airlineService.find(airline);
+	public Response update(Airline airline, @PathParam("id") long id) {
+		try {
+			airline.setId(id);
+			airlineService.update(airline);
+			return Response.ok().entity(airlineService.find(airline)).build();
+		} catch (Exception e) {
+			return Response.status(500).entity(e.getMessage()).build();
+		}
 	}
 }

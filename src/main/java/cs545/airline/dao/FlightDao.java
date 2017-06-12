@@ -28,8 +28,11 @@ public class FlightDao {
 	}
 
 	public Flight update(Flight flight) {
-		return entityManager.merge(flight);
-	}
+        entityManager.getTransaction().begin();
+        Flight f =  entityManager.merge(flight);
+        entityManager.getTransaction().commit();
+        return f;
+    }
 
 	public void delete(Flight flight) {
 	    entityManager.getTransaction().begin();
