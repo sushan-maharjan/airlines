@@ -4,31 +4,52 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<head>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xml:lang="en" lang="en">
+<h:head>
     <title>Flight Information</title>
 
-</head>
-<body>
+    <style type="text/css">
+        .table{
+            border-collapse:collapse;
+        }
+        .table-header{
+            text-align:center;
+            background:none repeat scroll 0 0 #00bfff;
+            border-bottom:1px solid black;
+            padding:12px;
+        }
+        .table-row{
+            text-align:center;
+            background:none repeat scroll 0 0 #87ceeb;
+            border:1px solid black;
+        }
+    </style>
+</h:head>
+<h:body>
 <h:form>
-
     <h:selectOneMenu binding = "#{filterOptions}">
-        <f:selectItem itemValue = "0" itemLabel = "-- Filter By --" />
+        <f:selectItem itemValue = "0" itemLabel = "   Filter By   " />
         <f:selectItem itemValue = "1" itemLabel = "Arrival dateTime" />
-        <f:selectItem itemValue = "2" itemLabel = "airline" />
-        <f:selectItem itemValue = "3" itemLabel = "departure DateTime" />
-        <f:selectItem itemValue = "4" itemLabel = "destination City" />
+        <f:selectItem itemValue = "2" itemLabel = "Airline" />
+        <f:selectItem itemValue = "3" itemLabel = "Departure DateTime" />
+        <f:selectItem itemValue = "4" itemLabel = "Destination City" />
     </h:selectOneMenu>
-
     <h:inputText binding = "#{filterText}" />
     <h:commandButton value = "GO" action = "#{flightController.displayFlights(filterOptions.value, filterText.value)}" >
     </h:commandButton>
 </h:form>
-    <h:dataTable id="flightInfo" value="#{flightController.getAllFlights()}" var="flight">
+    <h:dataTable id="flightInfo" value="#{flightController.getAllFlights()}" var="flight"
+                 styleClass="table"
+                 headerClass="table-header"
+                 rowClasses="table-row">
     <f:facet name = "header">
         <h:outputText value = "Flight Information" />
     </f:facet>
     <h:outputText value = "Flight Information" />
+
     <h:column>
         <f:facet name="header">
             <h:outputText value = "Flight Number" />
@@ -113,5 +134,5 @@
         <h:outputText value = "#{flight.airplane.capacity}" />
     </h:column>
 </h:dataTable>
-</body>
+</h:body>
 </html>
